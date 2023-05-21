@@ -1,11 +1,21 @@
 import NewTodo from "@/components/newTodo";
+import { PrismaClient } from "@prisma/client";
 import { Metadata } from "next";
 
-export default function Newtodo() {
+const getUsers = async () => {
+  const prisma = new PrismaClient();
+
+  const todos = await prisma.user.findMany({});
+  return todos;
+};
+
+export default async function Newtodo() {
+  const users = await getUsers();
+
   return (
     <>
       new todo
-      <NewTodo />
+      <NewTodo users={users}/>
     </>
   );
 }

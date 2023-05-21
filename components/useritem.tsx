@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -11,7 +12,7 @@ export default function UserItem({
   const router = useRouter();
   return (
     <li>
-      {user.name} -{" "}
+      <Link href={`/user/${user.id}`}>{user.name}</Link>-{" "}
       {isDeleting ? (
         <div className="inline text-sm text-slate-700 font-semibold">
           deleting...

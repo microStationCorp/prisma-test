@@ -1,16 +1,21 @@
 "use client";
+import { ToDo, User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
 export default function TodoItem({
   todo,
 }: {
-  todo: { todo: string; created_at: Date; id: string };
+  todo: ToDo & { User: User | null };
 }) {
   const [isDeleting, setDelete] = useState<boolean>(false);
   const router = useRouter();
   return (
     <li>
       {todo.todo}-{todo.created_at?.toDateString()} -{" "}
+      <span className="text-sm text-slate-600 font-semibold italic mr-2">
+        by {todo.User?.name}
+      </span>
       {isDeleting ? (
         <div className="inline text-sm text-slate-700 font-semibold">
           deleting...

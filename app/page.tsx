@@ -11,6 +11,9 @@ const getTodos = async () => {
     orderBy: {
       created_at: "desc",
     },
+    include: {
+      User: true,
+    },
   });
   return todos;
 };
