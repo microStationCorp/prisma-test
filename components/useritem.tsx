@@ -1,16 +1,17 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-export default function TodoItem({
-  todo,
+
+export default function UserItem({
+  user,
 }: {
-  todo: { todo: string; created_at: Date; id: string };
+  user: { name: string; id: string };
 }) {
   const [isDeleting, setDelete] = useState<boolean>(false);
   const router = useRouter();
   return (
     <li>
-      {todo.todo}-{todo.created_at?.toDateString()} -{" "}
+      {user.name} -{" "}
       {isDeleting ? (
         <div className="inline text-sm text-slate-700 font-semibold">
           deleting...
@@ -25,7 +26,7 @@ export default function TodoItem({
           className="w-4 h-4 inline hover:cursor-pointer"
           onClick={() => {
             setDelete(true);
-            fetch(`/api/delete/todo/${todo.id}`, {
+            fetch(`/api/delete/user/${user.id}`, {
               method: "DELETE",
             })
               .then((res) => res.json())

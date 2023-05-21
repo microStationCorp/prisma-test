@@ -2,14 +2,14 @@
 
 import { useFormik } from "formik";
 
-export default function NewTodo() {
+export default function NewUser() {
   const formik = useFormik({
     initialValues: {
-      todo: "",
+      name: "",
     },
     onSubmit: async (values, { resetForm }) => {
       console.log(values);
-      const res = await fetch("/api/create/todo", {
+      const res = await fetch("/api/create/user", {
         method: "POST",
         body: JSON.stringify(values),
       });
@@ -24,9 +24,9 @@ export default function NewTodo() {
         <input
           type="text"
           className="bg-slate-100 border-2 rounded-md"
-          name="todo"
+          name="name"
           onChange={formik.handleChange}
-          value={formik.values.todo}
+          value={formik.values.name}
         />
         <button
           className={

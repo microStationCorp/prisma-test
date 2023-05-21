@@ -14,4 +14,12 @@ model ToDo {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   todo       String
   created_at DateTime @default(now())
+  User       User?    @relation(fields: [userId], references: [id])
+  userId     String?  @db.ObjectId
+}
+
+model User {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  todo ToDo[]
 }
