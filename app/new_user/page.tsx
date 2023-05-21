@@ -1,6 +1,8 @@
 import NewUser from "@/components/newuser";
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export default function Newuser() {
   return (
     <>

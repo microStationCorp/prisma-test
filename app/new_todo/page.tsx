@@ -2,6 +2,8 @@ import NewTodo from "@/components/newTodo";
 import { PrismaClient } from "@prisma/client";
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 const getUsers = async () => {
   const prisma = new PrismaClient();
 
@@ -15,7 +17,7 @@ export default async function Newtodo() {
   return (
     <>
       new todo
-      <NewTodo users={users}/>
+      <NewTodo users={users} />
     </>
   );
 }
